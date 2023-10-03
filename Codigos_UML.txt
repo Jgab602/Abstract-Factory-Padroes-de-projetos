@@ -1,0 +1,136 @@
+Image-3
+@startuml
+interface Button{
+void paint()
+}
+
+
+class MacOSButton implements Button {
+    + void paint()
+}
+
+
+class WindowsButton implements Button {
+    + void paint()
+}
+
+interface Checkbox{
++ void paint()
+}
+
+
+class MacOSCheckbox implements Checkbox {
+    + void paint()
+}
+
+
+class WindowsCheckbox implements Checkbox {
+    + void paint()
+}
+
+interface GUIFactory {
+Button createButton()
+Checkbox createCheckbox()
+}
+
+GUIFactory ---> Button
+GUIFactory ---> Checkbox
+
+class MacOSFactory implements GUIFactory {
+    + Button createButton()
+    + Checkbox createCheckbox()
+
+}
+
+MacOSFactory -[dashed]-> Button
+MacOSFactory -[dashed]-> Checkbox
+
+class WindowsFactory implements GUIFactory {
+    + Button createButton()
+    + Checkbox createCheckbox()
+}
+
+WindowsFactory -[dashed]-> Button
+WindowsFactory -[dashed]-> Checkbox
+
+
+class Application{
+
+}
+
+Application -[dashed]-> Button
+Application -[dashed]-> Checkbox
+Application ---> GUIFactory
+
+Demo ---> Application
+
+@enduml
+
+
+
+Image-4
+@startuml
+interface Motor{
+void iniciar()
+}
+
+
+interface Rodas{
+void Rodar()
+}
+
+
+class MotorEsportivo implements Motor {
+    + void iniciar()
+}
+
+
+class RodasEsportivas implements Rodas {
+    + void rodar()
+}
+
+class MotorPopular implements Motor {
+    + void iniciar()
+}
+
+
+class RodasPopulares implements Rodas {
+    + void rodar()
+}
+
+
+interface FabricaAbstrata {
+    Motor criarMotor();
+    Rodas criarRodas();
+}
+
+
+FabricaAbstrata ---> Motor
+FabricaAbstrata ---> Rodas
+
+
+class FabricaCarroEsportivo implements FabricaAbstrata {
+    + Motor criarMotor()
+    + Rodas criarRodas()
+
+}
+
+FabricaCarroEsportivo -[dashed]-> MotorEsportivo
+FabricaCarroEsportivo -[dashed]-> RodasEsportivas
+
+class FabricaCarroPopular implements FabricaAbstrata {
+    + Motor criarMotor()
+    + Rodas criarRodas()
+}
+
+
+FabricaCarroPopular -[dashed]-> MotorPopular
+FabricaCarroPopular -[dashed]-> RodasPopulares
+
+
+Class Usuario
+
+Usuario ---> FabricaAbstrata
+Usuario ---> Motor
+Usuario ---> Rodas
+@enduml
