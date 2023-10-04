@@ -360,7 +360,7 @@ Este exemplo demonstra como o padrão "Abstract Factory" pode ser implementado p
 
 
 ## Padrão Relacionado
-[Factory Method]: Aplica conceitos similares ao encapsular a criação de objetos. 
+Factory Method: Aplica conceitos similares ao encapsular a criação de objetos. 
 
 
 
